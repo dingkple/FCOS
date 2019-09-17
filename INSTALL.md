@@ -6,7 +6,7 @@
 - cocoapi
 - yacs
 - matplotlib
-- GCC >= 4.9
+- GCC >= 4.9,< 6.0
 - (optional) OpenCV for the webcam demo
 
 ### Option 1: Step-by-step installation
