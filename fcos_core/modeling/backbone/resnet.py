@@ -1,3 +1,11 @@
+'''
+@Author: Zk Ding
+@Date: 2019-09-17 15:16:04
+@Company: RJ
+@LastEditors: Zk Ding
+@LastEditTime: 2019-09-17 17:43:14
+@Description: Customs Project Python (custom: fix dcn config none error)
+'''
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
 """
 Variant of the resnet module that takes cfg as an argument.
@@ -283,7 +291,9 @@ class Bottleneck(nn.Module):
         )
         self.bn1 = norm_func(bottleneck_channels)
         # TODO: specify init for the above
-        with_dcn = dcn_config.get("stage_with_dcn", False)
+        
+        # dcn could be none here
+        with_dcn = dcn_config and dcn_config.get("stage_with_dcn", False)
         if with_dcn:
             deformable_groups = dcn_config.get("deformable_groups", 1)
             with_modulated_dcn = dcn_config.get("with_modulated_dcn", False)
